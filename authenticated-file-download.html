@@ -4,6 +4,8 @@
 <head>
    <title>Authenticated File Download</title>
 
+   <link rel="stylesheet" href="css/pretty.css" />
+
    <!-- This library is used to encode username and password for BASIC authentication. -->
    <script src="lib/base64.js"></script>
 
@@ -16,20 +18,41 @@
 
 <body>
 
-   <p>Enter server:
-      <input type="text" id="nuxeoUrl" size="36" value="http://localhost:8080/nuxeo"></input>
-   </p>
-   <p>Enter user name:
-      <input type="text" id="userName" size="36" value="Administrator"></input>
-   </p>
-   <p>Enter password:
-      <input type="password" id="password" size="36" value="Administrator"></input>
-   </p>
-   <p>Enter document ID:
-      <input type="text" id="docId" size="36"></input>
-   </p>
-   <button type="button" id="fileDownloadLink">Download</button>
+   <div class="prettyBox">
+      <table>
+         <tr>
+            <td>Server</td>
+            <td>
+               <input type="text" id="nuxeoUrl" value="http://localhost:8080/nuxeo"></input>
+            </td>
+         </tr>
+         <tr>
+            <td>User name</td>
+            <td>
+               <input type="text" id="userName" value="Administrator"></input>
+            </td>
+         </tr>
+         <tr>
+            <td>Password</td>
+            <td>
+               <input type="password" id="password" value="Administrator"></input>
+            </td>
+         </tr>
+         <tr>
+            <td>Document ID</td>
+            <td>
+               <input type="text" id="docId"></input>
+            </td>
+         </tr>
+         <tr>
+            <td></td>
+            <td align="right">
+               <button type="button" id="fileDownloadLink">Download</button>
+            </td>
 
+         </tr>
+      </table>
+   </div>
 </body>
 
 </html>

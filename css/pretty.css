@@ -1,0 +1,40 @@
+body {
+   font: normal 12px/18pt "Lucida Grande", Arial, sans-serif;
+   background: url("../images/nuxeo_wallpaper.png") top left no-repeat #ffffff;
+   background-size: cover;
+}
+
+input {
+   border: 1px solid #aaa;
+   border-radius: 2px;
+   box-shadow: 1px 1px 2px #e0e0e0 inset;
+   padding: .3em;
+   margin: 0 0 .4em;
+   width: 220px;
+}
+
+.prettyBox {
+   background: none 0 0 #c5e6f6;
+   box-sizing: border-box;
+   border-radius: 3px;
+   padding: 1.5em 1em 1em;
+   /**
+    * The silliness below centers the div in the page.
+    *
+    * The 'width' is required to horizontally center.
+    *
+    * Normally it's suggested to use a fixed height for vertical centering because
+    * the default 'display' will be block so the div will fill the screen. But I
+    * found that 'display: table' works; the div is vertically centered and the
+    * height adjusts to match the content.
+    */
+   
+   width: 340px;
+   display: table;
+   margin: auto;
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+}
