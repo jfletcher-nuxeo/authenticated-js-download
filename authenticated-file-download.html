@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Authenticated File Download</title>
+
+   <!-- This library is used to encode username and password for BASIC authentication. -->
+   <script src="lib/base64.js"></script>
+
+   <!-- This library handles saving a blob returned by XMLHTTPRequest to a file. -->
+   <script src="lib/FileSaver.js"></script>
+
+   <!-- This is mainly the event handler for the click. -->
+   <script src="lib/authenticated-file-download.js"></script>
+</head>
+
+<body>
+
+   <p>Enter document ID:
+      <input type="text" id="docId" size="36"></input>
+   </p>
+   <button type="button" id="fileDownloadLink">Download</button>
+
+</body>
+
+</html>
