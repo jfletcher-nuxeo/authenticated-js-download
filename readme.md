@@ -6,6 +6,24 @@ I want to be able to download the PDF [rendition](https://doc.nuxeo.com/x/Mo5kAQ
 
     http://localhost:8080/nuxeo/json/cmis/default/root?succinct=true&streamId=nuxeo%3Arendition%3Apdf&cmisselector=content&objectId=07cdb579-b845-46a7-b22f-f49fa4f7de8b&download=attachment
 
+## Usage
+
+You need to [configure CORS in Nuxeo](https://doc.nuxeo.com/x/vIvZ) to allow CMIS requests from a Web app. I chose to restrict it to just the JSON binding from localhost.  Here is my contribution:
+
+    <extension target="org.nuxeo.ecm.platform.web.common.requestcontroller.service.RequestControllerService" point="corsConfig">
+        <corsConfig name="forCMISBrowserBinding">
+            allowOrigin="http://localhost"
+            <pattern>/nuxeo/json/cmis.*</pattern>
+        </corsConfig>
+    </extension>
+
+You'll need some sort of Web server to host the application. I used Apache.
+
+* Open `authenticated-file-download.html`.
+* Fill in the parameters as needed.
+* **The document ID is required.** There's one hard-coded in the JS but that's from my local server.
+* Click the `Download` button.
+
 ## The Problem
 
 ### Authentication
@@ -39,20 +57,20 @@ To save the blob I used [https://github.com/eligrey/FileSaver.js/](https://githu
 
 Note that `FileSaver.js` implements the HTML5 W3C `saveAs()` interface.
 
-## Context
+## The Context
 
 The solution is deceptively simple. It took me several days of research, understanding, and testing to find the answer. While scouring the internet I found there are several ways to "download a file" using Javascript and several ways to make authenticated requests using Javascript but I found literally nothing that combines the two on the client side.  Every solution I found that attempted to combine the two involved modifications on the server side.
 
 Caveat: the solution, in particular the file download, relies on the `File` API from HTML5, as well as the `download` attribute.  The point is it works well mainly in modern browsers.
 
-## What's Included
+## The Contents
 
 * `authenticated-file-download.html` - Here you can enter the necessary info to build a test URL and download the rendition.
 * `lib/authenticated-file-download.js` - The JS bits that make up the application.
 * `lib/base64.js` - Used to encode the user name and password for the `Authorization` header. It supposedly originated [here](http://www.webtoolkit.info/javascript-base64.html) but that gives a `404`. I actually found it [here](http://stackoverflow.com/a/246813).
 * `lib/FileSaver.js` - This library handles saving a file (e.g. the blob returned by XHR) to the local disk.  From [https://github.com/eligrey/FileSaver.js/](https://github.com/eligrey/FileSaver.js/).
 
-## Tips
+## The Tips
 
 * I tried to make this example as simple as possible to focus on a) authenticating the request and b) saving the file.  By no means is it meant to be a "best practice" example, just a simple explanation of how it works.
 
