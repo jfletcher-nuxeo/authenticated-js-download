@@ -11,8 +11,7 @@ I want to be able to download the PDF [rendition](https://doc.nuxeo.com/x/Mo5kAQ
 You need to [configure CORS in Nuxeo](https://doc.nuxeo.com/x/vIvZ) to allow CMIS requests from a Web app. I chose to restrict it to just the JSON binding from localhost.  Here is my contribution:
 
     <extension target="org.nuxeo.ecm.platform.web.common.requestcontroller.service.RequestControllerService" point="corsConfig">
-        <corsConfig name="forCMISBrowserBinding">
-            allowOrigin="http://localhost"
+        <corsConfig name="forCMISBrowserBinding" allowOrigin="http://localhost">
             <pattern>/nuxeo/json/cmis.*</pattern>
         </corsConfig>
     </extension>
@@ -79,10 +78,9 @@ Caveat: the solution, in particular the file download, relies on the `File` API 
 ***
 
     <extension target="org.nuxeo.ecm.platform.web.common.requestcontroller.service.RequestControllerService" point="corsConfig">
-    <corsConfig name="forCMISBrowserBinding">
-     allowOrigin="http://localhost"
-     <pattern>/nuxeo/json/cmis.*</pattern>
-    </corsConfig>
+        <corsConfig name="forCMISBrowserBinding" allowOrigin="http://localhost">
+            <pattern>/nuxeo/json/cmis.*</pattern>
+        </corsConfig>
     </extension>
 
 ***
